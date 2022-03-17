@@ -15,15 +15,19 @@ class HotelList extends StatefulWidget {
 
 class _HotelListViewState extends State<HotelList>
     with SingleTickerProviderStateMixin {
- late AnimationController _anim;
+  late AnimationController _anim;
 
-  late List<Hotel> _oldHotels;
+  List<Hotel> _oldHotels = [];
 
   @override
   void initState() {
     _anim =
         AnimationController(vsync: this, duration: Duration(milliseconds: 700));
     _anim.addListener(() => setState(() {}));
+    if (_oldHotels != widget.hotels) {
+      _anim.forward(from: 0);
+    }
+    _oldHotels = widget.hotels;
     super.initState();
   }
 
@@ -69,7 +73,7 @@ class _HotelListViewState extends State<HotelList>
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(hotel.name??"", style: Styles.hotelTitle),
+            Text(hotel.name ?? "", style: Styles.hotelTitle),
             SizedBox(height: 3),
             Row(
               children: <Widget>[

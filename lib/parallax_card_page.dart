@@ -51,10 +51,10 @@ class _ParallexCardPageState extends State<ParallexCardPage> {
               cities: _cityList,
               onCityChange: _handleCityChange,
             ),
-            Container(
-              height: size.height * .25,
-            ),
-            //HotelList(_currentCity.hotels!),
+            // Container(
+            //   height: size.height * .25,
+            // ),
+            HotelList(_currentCity.hotels!),
             Expanded(child: SizedBox()),
           ],
         ),
